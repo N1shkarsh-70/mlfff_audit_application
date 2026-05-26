@@ -1,0 +1,4 @@
+/* App host wrapper to enforce full viewport height and structure without scrolling */
+:host {
+  @apply flex flex-col h-screen w-full overflow-hidden bg-[#F9FAFB];
+}

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MLFF Transaction Audit System</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    window.onerror = function(msg, url, lineNo, columnNo, error) {
+      document.body.innerHTML += '<div style="color: red; padding: 20px; font-family: monospace; z-index: 9999; position: absolute; background: white; top: 0; left: 0; right: 0;"><strong>Error:</strong> ' + msg + '<br>' + error?.stack + '</div>';
+      return false;
+    };
+    window.addEventListener('unhandledrejection', function(event) {
+      document.body.innerHTML += '<div style="color: red; padding: 20px; font-family: monospace; z-index: 9999; position: absolute; background: white; top: 0; left: 0; right: 0;"><strong>Unhandled Promise Rejection:</strong> ' + event.reason + '<br>' + event.reason?.stack + '</div>';
+    });
+  </script>
+</head>
+<body class="antialiased">
+  <app-root></app-root>
+</body>
+</html>

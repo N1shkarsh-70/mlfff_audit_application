@@ -1,0 +1,23 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-transaction-summary',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <div class="page-content bg-gray-50 flex items-center justify-center">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <h2 class="text-lg font-semibold text-gray-500">Transaction Summary</h2>
+        <p class="text-sm text-gray-400 mt-1">Coming soon</p>
+      </div>
+    </div>
+  `,
+})
+export class TransactionSummaryComponent {}
