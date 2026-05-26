@@ -125,15 +125,15 @@ Chart.register(...registerables);
       <div class="flex flex-col lg:flex-row gap-4 shrink-0 lg:shrink lg:min-h-0">
         
         <!-- Audit Productivity -->
-        <div class="bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] border border-gray-100 p-5 flex flex-col min-w-[540px] w-[540px] shrink-0">
+        <div class="bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] border border-gray-100 p-5 flex flex-col w-full lg:w-[40%] shrink-0">
           <div class="flex items-center gap-2 mb-6">
             <svg class="w-5 h-5 text-[#1A56DB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
             <h2 class="text-[15px] font-bold text-[#1E293B]">Audit Productivity (Today)</h2>
           </div>
           
-          <div class="grid grid-cols-4 gap-0 w-full items-start pb-2">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0 w-full items-start pb-2">
             <!-- Metric 1 -->
-            <div class="flex flex-col items-center w-full">
+            <div class="flex flex-col items-center w-full pb-6 xl:pb-0">
               <span class="text-[12px] font-medium text-[#475569] text-center h-[36px] flex flex-col justify-end">Audited by You</span>
               <span class="text-[26px] font-bold text-[#0F172A] mt-5">532</span>
               <div class="w-10 h-10 rounded-full flex items-center justify-center text-[#2563EB] bg-[#EFF6FF] border border-[#BFDBFE] mt-6">
@@ -142,7 +142,7 @@ Chart.register(...registerables);
             </div>
             
             <!-- Metric 2 -->
-            <div class="flex flex-col items-center w-full border-l border-gray-100">
+            <div class="flex flex-col items-center w-full pt-6 md:pt-0 pb-6 xl:pb-0 border-t border-gray-100 md:border-t-0 md:border-l">
               <span class="text-[12px] font-medium text-[#475569] text-center h-[36px] flex flex-col justify-end">Avg. Handling Time</span>
               <span class="text-[26px] font-bold text-[#0F172A] mt-5">1m 32s</span>
               <div class="w-10 h-10 rounded-full flex items-center justify-center text-[#2563EB] bg-[#EFF6FF] border border-[#BFDBFE] mt-6">
@@ -151,7 +151,7 @@ Chart.register(...registerables);
             </div>
             
             <!-- Metric 3 -->
-            <div class="flex flex-col items-center w-full border-l border-gray-100">
+            <div class="flex flex-col items-center w-full pt-6 xl:pt-0 border-t border-gray-100 xl:border-t-0 xl:border-l">
               <span class="text-[12px] font-medium text-[#475569] text-center h-[36px] flex flex-col justify-end">Accuracy</span>
               <span class="text-[26px] font-bold text-[#0F172A] mt-5">96.4%</span>
               <div class="w-10 h-10 rounded-full flex items-center justify-center text-[#DC2626] bg-[#FEF2F2] border border-[#FECACA] mt-6">
@@ -160,7 +160,7 @@ Chart.register(...registerables);
             </div>
             
             <!-- Metric 4 -->
-            <div class="flex flex-col items-center w-full border-l border-gray-100">
+            <div class="flex flex-col items-center w-full pt-6 xl:pt-0 border-t border-gray-100 xl:border-t-0 md:border-l">
               <span class="text-[12px] font-medium text-[#475569] text-center h-[36px] flex flex-col justify-end">Vs Yesterday<br>(Accuracy)</span>
               <span class="text-[26px] font-bold text-[#16A34A] flex items-center gap-1 mt-5"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg> 8.7%</span>
               <div class="w-10 h-10 rounded-full flex items-center justify-center text-[#EA580C] bg-[#FFEDD5] mt-6">
@@ -171,29 +171,29 @@ Chart.register(...registerables);
         </div>
 
         <!-- Audit Trend -->
-        <div class="bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] border border-gray-100 p-4 lg:p-5 flex flex-col flex-1 min-h-[250px] lg:min-h-0 lg:h-full">
-          <div class="flex flex-wrap items-center justify-between gap-4 mb-2 shrink-0">
+        <div class="bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] border border-gray-100 p-5 flex flex-col w-full lg:w-[60%] shrink-0">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 shrink-0">
             <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-[#1A56DB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
-              <h2 class="text-[13px] font-bold text-gray-900">Audit Trend</h2>
+              <svg class="w-5 h-5 text-[#1A56DB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
+              <h2 class="text-[15px] font-bold text-[#1E293B]">Audit Trend</h2>
             </div>
-            <div class="flex bg-white border border-gray-200 rounded-md overflow-hidden shadow-sm">
-              <button class="px-4 py-1.5 text-[11px] font-bold bg-[#EFEDFD] text-[#1A56DB]">Daily</button>
-              <button class="px-4 py-1.5 text-[11px] font-medium text-gray-500 hover:bg-gray-50 border-l border-gray-200">Weekly</button>
-              <button class="px-4 py-1.5 text-[11px] font-medium text-gray-500 hover:bg-gray-50 border-l border-gray-200">Monthly</button>
+            <div class="flex w-full md:w-auto bg-white border border-[#E2E8F0] rounded-lg overflow-hidden shadow-sm">
+              <button class="flex-1 md:flex-none px-6 py-2 text-[13px] font-bold bg-[#EFF6FF] text-[#1A56DB]">Daily</button>
+              <button class="flex-1 md:flex-none px-6 py-2 text-[13px] font-medium text-[#64748B] hover:bg-[#F8FAFC] border-l border-[#E2E8F0]">Weekly</button>
+              <button class="flex-1 md:flex-none px-6 py-2 text-[13px] font-medium text-[#64748B] hover:bg-[#F8FAFC] border-l border-[#E2E8F0]">Monthly</button>
             </div>
           </div>
           
           <!-- Custom Legend -->
-          <div class="flex items-center justify-center gap-6 mb-2 shrink-0">
-            <div class="flex items-center gap-1.5"><div class="w-2.5 h-0.5 bg-[#16A34A]"></div><span class="text-[10px] font-medium text-gray-600">Approved</span></div>
-            <div class="flex items-center gap-1.5"><div class="w-2.5 h-0.5 bg-[#DC2626]"></div><span class="text-[10px] font-medium text-gray-600">Rejected</span></div>
-            <div class="flex items-center gap-1.5"><div class="w-2.5 h-0.5 bg-[#F59E0B]"></div><span class="text-[10px] font-medium text-gray-600">Pending Queue</span></div>
-            <div class="flex items-center gap-1.5"><div class="w-2.5 h-0.5 bg-[#9333EA]"></div><span class="text-[10px] font-medium text-gray-600">Exempted</span></div>
+          <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mb-6 shrink-0">
+            <div class="flex items-center gap-2.5"><div class="w-4 h-[3px] bg-[#16A34A]"></div><span class="text-[13px] font-semibold text-[#334155]">Approved</span></div>
+            <div class="flex items-center gap-2.5"><div class="w-4 h-[3px] bg-[#DC2626]"></div><span class="text-[13px] font-semibold text-[#334155]">Rejected</span></div>
+            <div class="flex items-center gap-2.5"><div class="w-4 h-[3px] bg-[#F59E0B]"></div><span class="text-[13px] font-semibold text-[#334155]">Pending Queue</span></div>
+            <div class="flex items-center gap-2.5"><div class="w-4 h-[3px] bg-[#9333EA]"></div><span class="text-[13px] font-semibold text-[#334155]">Exempted</span></div>
           </div>
 
-          <div class="relative flex-1 min-h-0 w-full">
-            <canvas #trendChart></canvas>
+          <div class="relative w-full h-[240px]">
+            <canvas #trendChart class="w-full h-full"></canvas>
           </div>
         </div>
 
@@ -358,7 +358,6 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
   @ViewChild('summaryDonut') summaryDonutRef!: ElementRef<HTMLCanvasElement>;
 
   private charts: Chart[] = [];
-  private resizeObserver: ResizeObserver | null = null;
 
   ngAfterViewInit() {
     // Delay initialization slightly to ensure grid layout is computed properly
@@ -367,15 +366,6 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       this.initTrendChart();
       this.initSummaryDonut();
     }, 100);
-
-    // Watch for resizes to handle chart scaling properly
-    this.resizeObserver = new ResizeObserver(() => {
-      this.charts.forEach(chart => chart.resize());
-    });
-    
-    if (this.trendChartRef) {
-      this.resizeObserver.observe(this.trendChartRef.nativeElement.parentElement!);
-    }
   }
 
   private initComplianceChart() {
@@ -407,45 +397,47 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       data: {
         labels: ['12 May','13 May','14 May','15 May','16 May','17 May','18 May'],
         datasets: [
-          { label:'Approved', data:[1800,2100,1950,2200,2100,2400,2600], borderColor:'#16A34A', backgroundColor:'transparent', tension:0.4, pointRadius:4, pointBackgroundColor:'#fff', pointBorderColor:'#16A34A', pointBorderWidth:2, borderWidth:2 },
-          { label:'Rejected', data:[1000,1200,1050,1200,1100,1500,1400], borderColor:'#DC2626', backgroundColor:'transparent', tension:0.4, pointRadius:4, pointBackgroundColor:'#fff', pointBorderColor:'#DC2626', pointBorderWidth:2, borderWidth:2 },
-          { label:'Pending Queue', data:[500,550,500,580,550,750,600], borderColor:'#F59E0B', backgroundColor:'transparent', tension:0.4, pointRadius:4, pointBackgroundColor:'#fff', pointBorderColor:'#F59E0B', pointBorderWidth:2, borderWidth:2 },
-          { label:'Exempted', data:[100,120,110,130,120,150,140], borderColor:'#9333EA', backgroundColor:'transparent', tension:0.4, pointRadius:4, pointBackgroundColor:'#fff', pointBorderColor:'#9333EA', pointBorderWidth:2, borderWidth:2 },
+          { label:'Approved', data:[1800,2100,1950,2100,2350,2750,2350], borderColor:'#16A34A', backgroundColor:'transparent', tension:0, pointRadius:4, pointBackgroundColor:'#fff', pointBorderColor:'#16A34A', pointBorderWidth:2, borderWidth:2 },
+          { label:'Rejected', data:[1050,1300,1050,1300,1100,1550,1900], borderColor:'#DC2626', backgroundColor:'transparent', tension:0, pointRadius:4, pointBackgroundColor:'#fff', pointBorderColor:'#DC2626', pointBorderWidth:2, borderWidth:2 },
+          { label:'Pending Queue', data:[500,550,500,600,550,750,600], borderColor:'#F59E0B', backgroundColor:'transparent', tension:0, pointRadius:4, pointBackgroundColor:'#fff', pointBorderColor:'#F59E0B', pointBorderWidth:2, borderWidth:2 },
+          { label:'Exempted', data:[50,100,50,100,50,100,100], borderColor:'#9333EA', backgroundColor:'transparent', tension:0, pointRadius:4, pointBackgroundColor:'#fff', pointBorderColor:'#9333EA', pointBorderWidth:2, borderWidth:2 },
         ]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         layout: {
-          padding: { top: 10, right: 10 }
+          padding: { top: 10, right: 10, left: 10, bottom: 10 }
         },
         plugins: { 
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#1F2937',
-            padding: 10,
-            titleFont: { size: 12 },
-            bodyFont: { size: 11 },
+            backgroundColor: '#1E293B',
+            padding: 12,
+            titleFont: { size: 13, weight: 'bold' },
+            bodyFont: { size: 12 },
             displayColors: true,
-            boxPadding: 4
+            boxPadding: 4,
+            usePointStyle: true
           }
         },
         scales: {
           x: { 
-            grid: { display: false }, 
-            ticks: { font: { size: 10 }, color: '#6B7280' },
+            grid: { display: true, color: '#F1F5F9' }, 
+            ticks: { font: { size: 12 }, color: '#475569', padding: 10 },
             border: { display: false }
           },
           y: { 
             beginAtZero: true, 
             max: 3000, 
             ticks: { 
-              font: { size: 10 }, 
-              color: '#6B7280', 
+              font: { size: 12 }, 
+              color: '#475569', 
               callback: (v:any)=>v>=1000?(v/1000)+'K':v,
-              stepSize: 1000
+              stepSize: 1000,
+              padding: 10
             }, 
-            grid: { color: '#F3F4F6' },
+            grid: { display: true, color: '#F1F5F9' },
             border: { display: false }
           }
         }
@@ -494,8 +486,5 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy() { 
     this.charts.forEach(c => c.destroy()); 
-    if (this.resizeObserver) {
-      this.resizeObserver.disconnect();
-    }
   }
 }

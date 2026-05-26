@@ -6,110 +6,142 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-bank-reconciliation',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  styles: [`
-    .br-wrap { display:flex; flex-direction:column; gap:14px; padding:16px 20px; height:100%; background:#F9FAFB; }
-    .filter-row { background:white; border:1px solid #E5E7EB; border-radius:8px; padding:12px 14px; display:flex; align-items:flex-end; gap:10px; flex-wrap:wrap; flex-shrink:0; }
-    .fl { display:flex; flex-direction:column; gap:3px; }
-    .fl label { font-size:10px; color:#6B7280; font-weight:500; }
-    .date-box { display:flex; align-items:center; gap:6px; border:1px solid #D1D5DB; border-radius:6px; padding:0 10px; height:36px; background:white; font-size:12px; color:#374151; cursor:pointer; white-space:nowrap; }
-    .search-box { position:relative; flex:1; min-width:180px; }
-    .search-box input { padding-left:30px; }
-    .search-icon { position:absolute; left:8px; top:50%; transform:translateY(-50%); width:15px; height:15px; }
-    .export-row { display:flex; gap:10px; flex-shrink:0; }
-    .table-card { background:white; border:1px solid #E5E7EB; border-radius:8px; flex:1; display:flex; flex-direction:column; overflow:hidden; }
-    .tbl { width:100%; border-collapse:collapse; font-size:13px; }
-    .tbl th { text-align:left; padding:12px 20px; color:#374151; font-weight:600; border-bottom:1px solid #E5E7EB; white-space:nowrap; background:white; position:sticky; top:0; }
-    .tbl td { padding:13px 20px; border-bottom:1px solid #F3F4F6; color:#374151; }
-    .tbl tr:hover td { background:#F9FAFB; }
-    .pager { padding:12px 20px; border-top:1px solid #E5E7EB; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
-    .page-btns { display:flex; gap:4px; }
-    .pbtn { width:28px; height:28px; border:1px solid #E5E7EB; border-radius:5px; background:white; cursor:pointer; font-size:11px; color:#6B7280; display:flex; align-items:center; justify-content:center; font-family:inherit; }
-    .pbtn.act { background:#1A56DB; color:white; border-color:#1A56DB; font-weight:700; }
-    .pbtn:disabled { opacity:.4; cursor:default; }
-  `],
   template: `
-    <div class="page-content">
-      <div class="br-wrap">
-        <h1 style="font-size:18px;font-weight:800;color:#111827;letter-spacing:.04em;text-transform:uppercase;margin:0;flex-shrink:0;">Bank Reconciliation</h1>
+    <div class="flex flex-col h-full bg-[#F9FAFB] p-6 lg:p-8 gap-6 w-full min-h-0 overflow-y-auto">
+      
+      <!-- HEADER -->
+      <div class="shrink-0">
+        <h1 class="text-[#111827] text-lg font-extrabold uppercase tracking-wide leading-none">Bank Reconciliation</h1>
+      </div>
 
-        <!-- Filter Bar -->
-        <div class="filter-row">
-          <div class="search-box">
-            <svg class="search-icon" fill="none" stroke="#9CA3AF" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-            <input class="form-input" placeholder="Search by TXN, entry VRN" [(ngModel)]="search">
-          </div>
-          <div class="fl">
-            <label>From Date</label>
-            <div class="date-box"><svg style="width:14px;height:14px;" fill="none" stroke="#9CA3AF" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>18 May 2025</div>
-          </div>
-          <div class="fl">
-            <label>To Date</label>
-            <div class="date-box"><svg style="width:14px;height:14px;" fill="none" stroke="#9CA3AF" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>18 May 2025</div>
-          </div>
-          <div class="fl" style="min-width:150px;">
-            <label>Shift</label>
-            <select class="form-input" [(ngModel)]="shift"><option>All Shifts</option><option>Morning (6AM-2PM)</option><option>Evening (2PM-10PM)</option></select>
-          </div>
-          <div class="fl" style="min-width:140px;">
-            <label>Lane</label>
-            <select class="form-input" [(ngModel)]="lane"><option>All Lanes</option>@for(l of lanes;track l){<option>{{l}}</option>}</select>
-          </div>
-          <button class="btn-primary" style="padding:0 18px;height:36px;margin-top:13px;">
-            <svg style="width:14px;height:14px;" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-            Generate
-          </button>
+      <!-- FILTER CONTAINER -->
+      <div class="bg-white border border-gray-100 rounded-xl p-5 shadow-sm flex flex-col xl:flex-row items-start xl:items-end gap-5 shrink-0 w-full">
+        <!-- Search -->
+        <div class="flex-1 w-full xl:w-auto relative min-w-[240px]">
+          <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" class="w-full bg-white border border-gray-200 text-sm rounded-lg pl-10 pr-4 py-2.5 focus:outline-none focus:border-blue-500 hover:border-gray-300 placeholder-gray-400 transition-colors" placeholder="Search by TXN, entry VRN" [(ngModel)]="search">
         </div>
 
-        <!-- Export -->
-        <div class="export-row">
-          <button class="btn-outlined-green">
-            <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            Export to Excel
-          </button>
-          <button class="btn-outlined-red">
-            <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-            Export to PDF
-          </button>
+        <!-- From Date -->
+        <div class="flex flex-col gap-1.5 w-full xl:w-[180px] shrink-0">
+          <label class="text-[12px] font-bold text-gray-800">From Date</label>
+          <div class="relative flex items-center">
+            <svg class="absolute left-3.5 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <input type="date" class="w-full bg-white border border-gray-200 text-sm font-semibold text-gray-800 rounded-lg pl-10 pr-3 py-2.5 focus:outline-none hover:border-gray-300 transition-colors cursor-pointer" [(ngModel)]="fromDate">
+          </div>
         </div>
 
-        <!-- Table -->
-        <div class="table-card">
-          <div style="flex:1;overflow:auto;">
-            <table class="tbl">
-              <thead>
-                <tr><th>S.No.</th><th>Lane No.</th><th>VRN</th><th>Tag ID</th><th>Vehicle Class</th></tr>
-              </thead>
-              <tbody>
-                @for (r of rows; track r.s) {
-                  <tr>
-                    <td style="color:#6B7280;">{{r.s}}</td>
-                    <td>{{r.lane}}</td>
-                    <td style="font-weight:600;color:#111827;">{{r.vrn}}</td>
-                    <td style="font-family:monospace;font-size:11px;color:#6B7280;">{{r.tag}}</td>
-                    <td>{{r.vc}}</td>
-                  </tr>
-                }
-              </tbody>
-            </table>
+        <!-- To Date -->
+        <div class="flex flex-col gap-1.5 w-full xl:w-[180px] shrink-0">
+          <label class="text-[12px] font-bold text-gray-800">To Date</label>
+          <div class="relative flex items-center">
+            <svg class="absolute left-3.5 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <input type="date" class="w-full bg-white border border-gray-200 text-sm font-semibold text-gray-800 rounded-lg pl-10 pr-3 py-2.5 focus:outline-none hover:border-gray-300 transition-colors cursor-pointer" [(ngModel)]="toDate">
           </div>
-          <div class="pager">
-            <span style="font-size:11px;color:#6B7280;">Showing 1 to 10 of 245 entries</span>
-            <div class="page-btns">
-              <button class="pbtn" [disabled]="page===1" (click)="page=page-1">‹</button>
-              @for (p of pages; track p) {
-                @if (p===-1) { <span style="padding:0 4px;color:#9CA3AF;font-size:11px;line-height:28px;">...</span> }
-                @else { <button class="pbtn" [class.act]="p===page" (click)="page=p">{{p}}</button> }
+        </div>
+
+        <!-- Shift -->
+        <div class="flex flex-col gap-1.5 w-full xl:w-[160px] shrink-0">
+          <label class="text-[12px] font-bold text-gray-800">Shift</label>
+          <div class="relative">
+            <select class="appearance-none w-full bg-white border border-gray-200 text-sm font-semibold text-gray-800 rounded-lg pl-4 pr-10 py-2.5 focus:outline-none hover:border-gray-300 cursor-pointer transition-colors" [(ngModel)]="shift">
+              <option>All Shifts</option>
+              <option>Morning</option>
+              <option>Evening</option>
+            </select>
+            <svg class="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+        </div>
+
+        <!-- Lane -->
+        <div class="flex flex-col gap-1.5 w-full xl:w-[160px] shrink-0">
+          <label class="text-[12px] font-bold text-gray-800">Lane</label>
+          <div class="relative">
+            <select class="appearance-none w-full bg-white border border-gray-200 text-sm font-semibold text-gray-800 rounded-lg pl-4 pr-10 py-2.5 focus:outline-none hover:border-gray-300 cursor-pointer transition-colors" [(ngModel)]="lane">
+              <option>All Lanes</option>
+              <option *ngFor="let l of lanes">{{l}}</option>
+            </select>
+            <svg class="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+        </div>
+
+        <!-- Generate Button -->
+        <button class="bg-[#1A56DB] hover:bg-blue-700 text-white text-sm font-bold rounded-lg px-6 py-2.5 flex items-center justify-center gap-2 transition-colors shrink-0 w-full xl:w-auto h-[42px]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          Generate
+        </button>
+      </div>
+
+      <!-- EXPORT BUTTONS -->
+      <div class="flex flex-wrap items-center gap-3 shrink-0">
+        <button class="bg-white border border-[#22C55E] text-[#16A34A] hover:bg-green-50 text-[13px] font-bold rounded-md px-4 py-2.5 flex items-center gap-2 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Export to Excel
+        </button>
+        <button class="bg-white border border-[#EF4444] text-[#DC2626] hover:bg-red-50 text-[13px] font-bold rounded-md px-4 py-2.5 flex items-center gap-2 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          Export to PDF
+        </button>
+      </div>
+
+      <!-- TABLE CONTAINER -->
+      <div class="bg-white border border-gray-100 rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] flex flex-col flex-1 min-h-0 overflow-hidden w-full">
+        <div class="flex-1 overflow-auto">
+          <table class="w-full text-left text-[13px] whitespace-nowrap">
+            <thead class="sticky top-0 bg-white z-10 border-b border-gray-100 shadow-sm">
+              <tr>
+                <th class="px-6 py-4 font-extrabold text-gray-900 tracking-wide">S.No.</th>
+                <th class="px-6 py-4 font-extrabold text-gray-900 tracking-wide">Lane No.</th>
+                <th class="px-6 py-4 font-extrabold text-gray-900 tracking-wide">VRN</th>
+                <th class="px-6 py-4 font-extrabold text-gray-900 tracking-wide">Tag ID</th>
+                <th class="px-6 py-4 font-extrabold text-gray-900 tracking-wide">Vehicle Class</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-600 font-medium">
+              @for (r of rows; track r.s) {
+                <tr class="hover:bg-gray-50 border-b border-gray-50 transition-colors">
+                  <td class="px-6 py-4 text-gray-900 font-bold">{{r.s}}</td>
+                  <td class="px-6 py-4">{{r.lane}}</td>
+                  <td class="px-6 py-4 text-gray-900 font-bold">{{r.vrn}}</td>
+                  <td class="px-6 py-4 text-[#6B7280] font-mono text-[12px]">{{r.tag}}</td>
+                  <td class="px-6 py-4">{{r.vc}}</td>
+                </tr>
               }
-              <button class="pbtn" [disabled]="page===25" (click)="page=page+1">›</button>
-            </div>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- PAGINATION -->
+        <div class="px-6 py-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white shrink-0">
+          <span class="text-[13px] font-semibold text-gray-500">Showing 1 to 10 of 245 entries</span>
+          <div class="flex items-center gap-1.5">
+            <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-200 text-gray-500 hover:bg-gray-50 disabled:opacity-50 transition-colors" [disabled]="page===1" (click)="page=page-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            @for (p of pages; track p) {
+              @if (p === -1) { 
+                <span class="px-1 text-gray-400 font-bold text-[13px]">...</span> 
+              }
+              @else { 
+                <button class="w-8 h-8 flex items-center justify-center rounded border text-[13px] font-bold transition-colors" 
+                        [class.bg-[#EFF6FF]]="p===page" [class.border-[#BFDBFE]]="p===page" [class.text-[#1A56DB]]="p===page"
+                        [class.bg-white]="p!==page" [class.border-gray-200]="p!==page" [class.text-gray-600]="p!==page" [class.hover:bg-gray-50]="p!==page"
+                        (click)="page=p">{{p}}</button> 
+              }
+            }
+            <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-200 text-gray-500 hover:bg-gray-50 disabled:opacity-50 transition-colors" [disabled]="page===25" (click)="page=page+1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
           </div>
         </div>
       </div>
+
     </div>
   `
 })
 export class BankReconciliationComponent {
   search=''; shift='All Shifts'; lane='All Lanes'; page=1;
+  fromDate='2025-05-18'; toDate='2025-05-18';
   lanes=['Lane 01','Lane 02','Lane 03','Lane 04','Lane 05','Lane 06'];
   rows=[
     {s:1,lane:'Lane 01',vrn:'HR26DK8337',tag:'E280117020000F5A3',vc:'Car / Jeep / Van'},

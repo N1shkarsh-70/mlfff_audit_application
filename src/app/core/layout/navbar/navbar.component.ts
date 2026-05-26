@@ -7,24 +7,26 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterModule, CommonModule],
   template: `
-    <nav class="bg-white border-b border-gray-200 h-[72px] flex items-center justify-between px-6 shrink-0 z-10 w-full shadow-sm">
+    <nav class="bg-white border-b border-gray-200 h-[72px] flex items-center justify-between px-4 lg:px-6 shrink-0 z-20 w-full shadow-sm relative">
       
-      <!-- LEFT: Logo and Title -->
+      <!-- LEFT: Hamburger & Logo -->
       <div class="flex items-center gap-3">
-        <!-- Logo Icon (Approximation of the blue hexagon with graph) -->
-        <div class="w-10 h-10 bg-[#1A56DB] rounded-lg flex items-center justify-center shrink-0">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+        <!-- Hamburger Menu Toggle (Mobile) -->
+        <button class="lg:hidden p-2 -ml-2 text-gray-500 hover:text-gray-700 focus:outline-none" (click)="toggleMenu()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path *ngIf="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <path *ngIf="isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
-        </div>
-        <div class="flex flex-col">
-          <span class="text-xl font-bold text-[#111827] leading-none tracking-tight">MLFF</span>
-          <span class="text-[9px] font-bold text-[#1A56DB] tracking-[0.05em] mt-[3px]">TRANSACTION AUDIT SYSTEM</span>
+        </button>
+
+        <!-- Logo -->
+        <div class="flex items-center">
+          <img src="flow.png" alt="Flow Logo" class="w-[120px] h-auto object-contain">
         </div>
       </div>
 
-      <!-- CENTER: Navigation Links -->
-      <div class="flex h-full">
+      <!-- CENTER: Navigation Links (Desktop) -->
+      <div class="hidden lg:flex h-full">
         @for (link of navLinks; track link.path) {
           <a [routerLink]="link.path"
              class="relative flex items-center gap-2 px-5 h-full text-[13px] font-semibold transition-colors cursor-pointer"
@@ -50,7 +52,7 @@ import { CommonModule } from '@angular/common';
       </div>
 
       <!-- RIGHT: Notifications & User Profile -->
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-4 lg:gap-6">
         <!-- Notification Bell -->
         <button class="relative p-2 text-gray-500 hover:text-gray-700 transition-colors bg-white rounded-full hover:bg-gray-100">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,7 +65,7 @@ import { CommonModule } from '@angular/common';
         </button>
 
         <!-- Divider -->
-        <div class="w-px h-8 bg-gray-200"></div>
+        <div class="hidden sm:block w-px h-8 bg-gray-200"></div>
 
         <!-- User Profile Dropdown -->
         <div class="flex items-center gap-3 cursor-pointer group">
@@ -72,20 +74,39 @@ import { CommonModule } from '@angular/common';
               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
             </svg>
           </div>
-          <div class="flex flex-col">
+          <div class="hidden sm:flex flex-col">
             <span class="text-[13px] font-bold text-[#111827] group-hover:text-[#1A56DB] transition-colors leading-tight">Auditor 01</span>
             <span class="text-[11px] text-[#6B7280] leading-tight mt-[2px]">Senior Auditor</span>
           </div>
-          <svg class="w-4 h-4 text-gray-400 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="hidden sm:block w-4 h-4 text-gray-400 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </div>
       </div>
       
+      <!-- Mobile Navigation Dropdown -->
+      <div *ngIf="isMenuOpen" class="lg:hidden absolute top-[72px] left-0 w-full bg-white border-b border-gray-200 shadow-lg flex flex-col z-30">
+        @for (link of navLinks; track link.path) {
+          <a [routerLink]="link.path"
+             (click)="toggleMenu()"
+             class="flex items-center gap-3 px-6 py-4 text-[14px] font-semibold border-b border-gray-50 transition-colors"
+             [class.text-[#1A56DB]]="isActive(link.path)"
+             [class.text-[#4B5563]]="!isActive(link.path)"
+             [class.bg-blue-50]="isActive(link.path)">
+             <span [innerHTML]="link.icon" 
+                   [class.text-[#1A56DB]]="isActive(link.path)" 
+                   [class.text-[#6B7280]]="!isActive(link.path)"
+                   class="flex items-center justify-center"></span>
+             <span>{{ link.label }}</span>
+          </a>
+        }
+      </div>
     </nav>
   `
 })
 export class NavbarComponent {
+  isMenuOpen = false;
+
   navLinks = [
     { 
       path: '/dashboard', 
@@ -118,5 +139,9 @@ export class NavbarComponent {
 
   isActive(path: string): boolean {
     return this.router.url.includes(path);
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }
