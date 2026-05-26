@@ -125,43 +125,46 @@ Chart.register(...registerables);
       <div class="flex flex-col lg:flex-row gap-4 shrink-0 lg:shrink lg:min-h-0">
         
         <!-- Audit Productivity -->
-        <div class="bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] border border-gray-100 p-4 lg:p-5 flex flex-col w-full lg:w-[35%] xl:w-[30%] shrink-0">
-          <div class="flex items-center gap-2 mb-5">
-            <svg class="w-4 h-4 text-[#1A56DB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-            <h2 class="text-[13px] font-bold text-gray-900">Audit Productivity (Today)</h2>
+        <div class="bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] border border-gray-100 p-5 flex flex-col min-w-[540px] w-[540px] shrink-0">
+          <div class="flex items-center gap-2 mb-6">
+            <svg class="w-5 h-5 text-[#1A56DB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            <h2 class="text-[15px] font-bold text-[#1E293B]">Audit Productivity (Today)</h2>
           </div>
           
-          <div class="grid grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-y-6 gap-x-2 flex-1 items-center">
+          <div class="grid grid-cols-4 gap-0 w-full items-start pb-2">
             <!-- Metric 1 -->
-            <div class="flex flex-col items-center justify-between h-full">
-              <span class="text-[10px] font-medium text-gray-500 text-center leading-tight mb-2">Audited by You</span>
-              <span class="text-[22px] font-extrabold text-gray-900 mb-4">532</span>
-              <div class="w-8 h-8 rounded-full flex items-center justify-center text-[#1A56DB] bg-blue-50 mt-auto">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            <div class="flex flex-col items-center w-full">
+              <span class="text-[12px] font-medium text-[#475569] text-center h-[36px] flex flex-col justify-end">Audited by You</span>
+              <span class="text-[26px] font-bold text-[#0F172A] mt-5">532</span>
+              <div class="w-10 h-10 rounded-full flex items-center justify-center text-[#2563EB] bg-[#EFF6FF] border border-[#BFDBFE] mt-6">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
               </div>
             </div>
+            
             <!-- Metric 2 -->
-            <div class="flex flex-col items-center justify-between h-full border-l border-gray-100">
-              <span class="text-[10px] font-medium text-gray-500 text-center leading-tight mb-2">Avg. Handling<br>Time</span>
-              <span class="text-[22px] font-extrabold text-gray-900 mb-4">1m 32s</span>
-              <div class="w-8 h-8 rounded-full flex items-center justify-center text-[#1A56DB] bg-blue-50 mt-auto">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div class="flex flex-col items-center w-full border-l border-gray-100">
+              <span class="text-[12px] font-medium text-[#475569] text-center h-[36px] flex flex-col justify-end">Avg. Handling Time</span>
+              <span class="text-[26px] font-bold text-[#0F172A] mt-5">1m 32s</span>
+              <div class="w-10 h-10 rounded-full flex items-center justify-center text-[#2563EB] bg-[#EFF6FF] border border-[#BFDBFE] mt-6">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
             </div>
+            
             <!-- Metric 3 -->
-            <div class="flex flex-col items-center justify-between h-full border-l border-gray-100">
-              <span class="text-[10px] font-medium text-gray-500 text-center leading-tight mb-2">Accuracy</span>
-              <span class="text-[22px] font-extrabold text-gray-900 mb-4">96.4%</span>
-              <div class="w-8 h-8 rounded-full flex items-center justify-center text-[#DC2626] bg-red-50 mt-auto">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <div class="flex flex-col items-center w-full border-l border-gray-100">
+              <span class="text-[12px] font-medium text-[#475569] text-center h-[36px] flex flex-col justify-end">Accuracy</span>
+              <span class="text-[26px] font-bold text-[#0F172A] mt-5">96.4%</span>
+              <div class="w-10 h-10 rounded-full flex items-center justify-center text-[#DC2626] bg-[#FEF2F2] border border-[#FECACA] mt-6">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
               </div>
             </div>
+            
             <!-- Metric 4 -->
-            <div class="flex flex-col items-center justify-between h-full border-l border-gray-100">
-              <span class="text-[10px] font-medium text-gray-500 text-center leading-tight mb-2">Vs Yesterday<br>(Accuracy)</span>
-              <span class="text-[22px] font-extrabold text-[#16A34A] flex items-center gap-0.5 mb-4"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg> 8.7%</span>
-              <div class="w-8 h-8 rounded-full flex items-center justify-center text-[#D97706] bg-orange-50 mt-auto">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            <div class="flex flex-col items-center w-full border-l border-gray-100">
+              <span class="text-[12px] font-medium text-[#475569] text-center h-[36px] flex flex-col justify-end">Vs Yesterday<br>(Accuracy)</span>
+              <span class="text-[26px] font-bold text-[#16A34A] flex items-center gap-1 mt-5"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg> 8.7%</span>
+              <div class="w-10 h-10 rounded-full flex items-center justify-center text-[#EA580C] bg-[#FFEDD5] mt-6">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
               </div>
             </div>
           </div>
