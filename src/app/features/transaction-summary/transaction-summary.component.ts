@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="page-content bg-gray-50 flex items-center justify-center">
+    <div class="page-content bg-gray-50 flex items-center justify-center overflow-y-auto lg:overflow-hidden lg:h-full">
       <div class="text-center">
         <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

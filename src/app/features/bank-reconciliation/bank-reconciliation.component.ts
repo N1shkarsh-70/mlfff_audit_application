@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div class="flex flex-col h-full bg-[#F9FAFB] p-6 lg:p-8 gap-6 w-full min-h-0 overflow-y-auto">
+    <div class="flex flex-col bg-[#F9FAFB] p-4 md:p-6 lg:p-8 gap-4 md:gap-6 w-full min-h-0 overflow-y-auto lg:overflow-hidden lg:h-full">
       
       <!-- HEADER -->
       <div class="shrink-0">

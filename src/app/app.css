@@ -1,4 +1,17 @@
-/* App host wrapper to enforce full viewport height and structure without scrolling */
+/* App host wrapper: scrollable on mobile/tablet, viewport-locked on desktop */
 :host {
-  @apply flex flex-col h-screen w-full overflow-hidden bg-[#F9FAFB];
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background: #F9FAFB;
 }
+
+@media (min-width: 1024px) {
+  :host {
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+}
+

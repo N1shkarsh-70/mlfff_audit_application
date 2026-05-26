@@ -10,7 +10,7 @@ Chart.register(...registerables);
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div class="flex flex-col h-full bg-[#F9FAFB] p-4 lg:p-5 xl:p-6 overflow-y-auto lg:overflow-hidden gap-4 lg:gap-5 min-h-0 w-full">
+    <div class="flex flex-col bg-[#F9FAFB] p-4 lg:p-5 xl:p-6 gap-4 lg:gap-3 xl:gap-4 w-full overflow-y-auto lg:overflow-hidden lg:h-full lg:min-h-0">
       
       <!-- HEADER ROW -->
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 shrink-0">
@@ -122,10 +122,10 @@ Chart.register(...registerables);
       </div>
 
       <!-- MIDDLE ROW -->
-      <div class="flex flex-col lg:flex-row gap-4 shrink-0 lg:shrink lg:min-h-0">
+      <div class="flex flex-col lg:flex-row gap-4 lg:gap-3 xl:gap-4 shrink-0 lg:shrink lg:flex-1 lg:min-h-0">
         
         <!-- Audit Productivity -->
-        <div class="bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] border border-gray-100 p-5 flex flex-col w-full lg:w-[40%] shrink-0">
+        <div class="bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] border border-gray-100 p-4 lg:p-3 xl:p-5 flex flex-col w-full lg:w-[40%] shrink-0 lg:h-full lg:min-h-0">
           <div class="flex items-center gap-2 mb-6">
             <svg class="w-5 h-5 text-[#1A56DB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
             <h2 class="text-[15px] font-bold text-[#1E293B]">Audit Productivity (Today)</h2>
@@ -171,7 +171,7 @@ Chart.register(...registerables);
         </div>
 
         <!-- Audit Trend -->
-        <div class="bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] border border-gray-100 p-5 flex flex-col w-full lg:w-[60%] shrink-0">
+        <div class="bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] border border-gray-100 p-4 lg:p-3 xl:p-5 flex flex-col w-full lg:w-[60%] shrink-0 lg:h-full lg:min-h-0">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 shrink-0">
             <div class="flex items-center gap-2">
               <svg class="w-5 h-5 text-[#1A56DB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
@@ -192,7 +192,7 @@ Chart.register(...registerables);
             <div class="flex items-center gap-2.5"><div class="w-4 h-[3px] bg-[#9333EA]"></div><span class="text-[13px] font-semibold text-[#334155]">Exempted</span></div>
           </div>
 
-          <div class="relative w-full h-[240px]">
+          <div class="relative w-full h-[240px] lg:h-[160px] xl:h-[200px] lg:flex-1 lg:min-h-0">
             <canvas #trendChart class="w-full h-full"></canvas>
           </div>
         </div>
@@ -200,7 +200,7 @@ Chart.register(...registerables);
       </div>
 
       <!-- BOTTOM ROW -->
-      <div class="flex flex-col lg:flex-row gap-4 flex-1 min-h-0">
+      <div class="flex flex-col lg:flex-row gap-4 lg:gap-3 xl:gap-4 lg:flex-1 lg:min-h-0">
         
         <!-- Transaction Starts Summary -->
         <div class="bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] border border-gray-100 p-4 lg:p-5 flex flex-col w-full lg:w-[35%] xl:w-[30%] shrink-0 lg:h-full">

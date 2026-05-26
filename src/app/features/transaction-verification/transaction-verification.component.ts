@@ -13,13 +13,23 @@ interface Transaction {
   standalone: true,
   imports: [CommonModule, FormsModule],
   styles: [`
-    .tv-wrap { display:flex; flex-direction:column; height:100%; padding:14px 18px; gap:10px; background:#F9FAFB; overflow:hidden; }
+    .tv-wrap { display:flex; flex-direction:column; height:100%; padding:14px 18px; gap:10px; background:#F9FAFB; overflow-y:auto; }
     .filter-row { display:flex; align-items:flex-end; gap:8px; flex-wrap:wrap; padding:10px 12px; background:white; border:1px solid #E5E7EB; border-radius:8px; flex-shrink:0; }
     .filter-field { display:flex; flex-direction:column; gap:3px; }
     .filter-label { font-size:10px; color:#6B7280; font-weight:500; }
-    .split { display:flex; gap:10px; flex:1; min-height:0; overflow:hidden; }
-    .left-panel { width:42%; min-width:320px; display:flex; flex-direction:column; gap:8px; overflow-y:auto; }
-    .right-panel { flex:1; display:flex; flex-direction:column; background:white; border:1px solid #E5E7EB; border-radius:8px; overflow:hidden; }
+    .split { display:flex; flex-direction:column; gap:10px; flex:1; min-height:0; }
+    @media (min-width: 1024px) {
+      .split { flex-direction:row; overflow:hidden; }
+      .tv-wrap { overflow:hidden; }
+    }
+    .left-panel { width:100%; display:flex; flex-direction:column; gap:8px; overflow-y:auto; }
+    @media (min-width: 1024px) {
+      .left-panel { width:42%; min-width:320px; }
+    }
+    .right-panel { flex:1; display:flex; flex-direction:column; background:white; border:1px solid #E5E7EB; border-radius:8px; overflow:hidden; min-height:400px; }
+    @media (min-width: 1024px) {
+      .right-panel { min-height:0; }
+    }
     .img-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
     .img-box { background:#111827; border-radius:6px; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; overflow:hidden; }
     .img-btn-row { display:flex; gap:4px; justify-content:center; margin-top:4px; }
